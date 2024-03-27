@@ -22,7 +22,8 @@ class DBStorage:
         host = getenv("HBNB_MYSQL_HOST")
         database = getenv("HBNB_MYSQL_DB")
         self.__engine = create_engine(
-            "mysql+mysqldb://{}:{}@{}/{}".format(user, password, host, database),
+            "mysql+mysqldb://{}:{}@{}/{}"
+            .format(user, password, host, database),
             pool_pre_ping=True,
         )
 
@@ -42,7 +43,8 @@ class DBStorage:
             if type(cls) == str:
                 cls = eval(cls)
             objs = self.__session.query(cls)
-        return {"{}.{}".format(type(obj).__name__, obj.id): obj for obj in objs}
+        return {"{}.{}"
+                .format(type(obj).__name__, obj.id): obj for obj in objs}
 
     def new(self, obj):
         """Create new row"""
@@ -60,7 +62,8 @@ class DBStorage:
     def reload(self):
         """Reload from db"""
         Base.metadata.create_all(self.__engine)
-        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        session_factory = sessionmaker(bind=self.__engine,
+                                       expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()
 

@@ -129,15 +129,15 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        
+
         kwargs_dict = {}
         class_name = args.split()[0]
         params = args.split()[1:]
-        
+
         if class_name not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        
+
         for param in params:
             key, value = param.split("=")
             try:
@@ -148,7 +148,7 @@ class HBNBCommand(cmd.Cmd):
                 except ValueError:
                     value = " ".join(value.strip('"').split("_"))
             kwargs_dict[key] = value
-        
+
         new_instance = HBNBCommand.classes[class_name](**kwargs_dict)
         print(new_instance.id)
         new_instance.save()
