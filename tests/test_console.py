@@ -9,6 +9,7 @@ from console import HBNBCommand
 from io import StringIO
 from models import storage
 
+
 class test_command(unittest.TestCase):
     """Class to test the console"""
 
