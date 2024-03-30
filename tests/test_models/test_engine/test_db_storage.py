@@ -1,16 +1,17 @@
 #!/usr/bin/python3
-""" Module for testing database storage"""
+""" Module for testing DB storage """
+from os import getenv
 import unittest
 from models.base_model import BaseModel
-from models import storage, type_of_storage
+from models import storage
 
 
-@unittest.skipIf(type_of_storage != "db", "Testing DB storage only")
+@unittest.skipIf(getenv("HBNB_TYPE_STORAGE") != "db", "DBStorage")
 class TestDBStorage(unittest.TestCase):
-    """ Class for testing database storage"""
+    """ Class to test the database storage method """
 
     def test_all(self):
-        """ Test the all method"""
+        """ method to test the all method of dbStorage """
         new = BaseModel()
         temp = storage.all()
         self.assertIsInstance(temp, dict)
