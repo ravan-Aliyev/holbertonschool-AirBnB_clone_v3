@@ -41,9 +41,9 @@ def what_is_python(text="is cool"):
 
 
 @app.route("/number/<int:n>", strict_slashes=False)
-def what_is_number(n:int):
+def what_is_number(n: int):
     """Display number"""
-    return (f"{escape(n)} is number")
+    return (f"{escape(n)} is a number")
 
 
 if __name__ == '__main__':
