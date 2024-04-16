@@ -41,13 +41,13 @@ def what_is_python(text="is cool"):
 
 
 @app.route("/number/<int:n>", strict_slashes=False)
-def what_is_number(n:int):
+def what_is_number(n: int):
     """Display number"""
     return (f"{escape(n)} is number")
 
 
 @app.route("/number_template/<int:n>", strict_slashes=False)
-def show_number(n:int):
+def show_number(n: int):
     """Display number in the html page"""
     return render_template("5-number.html", n=n)
 
