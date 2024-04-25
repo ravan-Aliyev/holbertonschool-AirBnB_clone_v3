@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Blueprint"""
 from models.user import User
 from models.place import Place
 from models.state import State
@@ -12,6 +13,7 @@ from models import storage
 
 @app_views.route('/status')
 def status():
+    """Show status code"""
     data = {
         'status': "OK"
     }
@@ -20,6 +22,7 @@ def status():
 
 @app_views.route('/stats')
 def stats():
+    """Show stats"""
     data = {
         "amenities": storage.count(Amenity),
         "cities": storage.count(City),
