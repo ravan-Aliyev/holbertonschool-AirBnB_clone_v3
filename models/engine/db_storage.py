@@ -46,6 +46,17 @@ class DBStorage:
         return {"{}.{}"
                 .format(type(obj).__name__, obj.id): obj for obj in objs}
 
+    def get(self, cls, id):
+        if cls and id is not None:
+            for obj in self.all(cls).values():
+                if obj.id == id:
+                    return obj
+        else:
+            return None
+
+    def count(self, cls=None):
+        return len(self.all(cls))
+
     def new(self, obj):
         """Create new row"""
         self.__session.add(obj)
