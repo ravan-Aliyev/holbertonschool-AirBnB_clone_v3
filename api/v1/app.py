@@ -14,11 +14,13 @@ app.register_blueprint(app_views)
 
 @app.teardown_appcontext
 def close(exception):
+    """Close session"""
     storage.close()
 
 
 @app.errorhandler(404)
 def error_not_found(error):
+    """For 404 errors"""
     data = {
         "error": "Not found"
     }
