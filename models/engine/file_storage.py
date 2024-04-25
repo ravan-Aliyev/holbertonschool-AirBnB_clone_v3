@@ -21,6 +21,17 @@ class FileStorage:
         else:
             return FileStorage.__objects
 
+    def get(self, cls, id):
+        if id is not None and cls:
+            for obj in self.all(cls).values():
+                if obj.id == id:
+                    return obj
+        else:
+            return None
+
+    def count(self, cls=None):
+        return len(self.all(cls))
+
     def new(self, obj):
         """Adds new object to storage dictionary"""
         self.all().update({obj.to_dict()["__class__"] + "." + obj.id: obj})
