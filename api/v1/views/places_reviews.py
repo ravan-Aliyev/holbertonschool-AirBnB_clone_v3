@@ -12,13 +12,13 @@ from models import storage
                  strict_slashes=False, methods=['GET'])
 def retrive_all_review(place_id):
     """Get all review"""
-    place = storage.get(Review, place_id)
+    place = storage.get(Place, place_id)
     if place is None:
         abort(404)
 
     reviews = []
     for review in place.reviews:
-        reviews.append(place.to_dict())
+        reviews.append(review.to_dict())
     return jsonify(reviews)
 
 
