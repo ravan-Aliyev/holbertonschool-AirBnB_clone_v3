@@ -124,5 +124,6 @@ python3 -m unittest discover tests
 
 <h2 align="center">Authors</h2>
 
-- [Zaman Kazimov](https://github.com/kazimovzaman2)
+- [Revan Eliyev]
+- [Haji Murselzade]
 
